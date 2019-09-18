@@ -1,0 +1,11 @@
+{
+	"name": "UNCP Campus Map",
+	"short_name": "UNCP Map",
+	"start_url": "/index.html",
+	"display": "standalone",
+	"icons": [
+		{"src":"/img/uncp144.png",
+		"type": "image/png",
+		"sizes":"144x144"}
+	]
+}
