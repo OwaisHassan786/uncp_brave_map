@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>BraveMap</title>
+    <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/map.css">
+    <script src="js/main.js"></script>
+    <script src="js/jquery-3.4.1.js"></script>
+    <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+
+    <div class="navbar-minimal">
+        <img src="icons/app-icon-512x512.png">
+
+
+    </div>
+
+    <div class="main-container">
+        <div class="cards-container">
+            <div class="card" style="background-image: url(images/oldmain.jpg)">ACADEMICS</div>
+            <div class="card" style="background-image: url(images/admissions.jpg)">ADMISSIONS</div>
+            <div class="card" style="background-image: url(images/campuslife.jpg)">CAMPUS LIFE</div>
+            <div class="card" style="background-image: url(images/football.jpg)">ATHLETICS</div>
+        </div>
+        <div id="map"></div>
+    </div>
+    
+    <script src="js/collection.js"></script>
+    <script src="js/mapsv2.js"></script>
+    <!-- Google Maps JavaScript -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=&callback=getLocation"></script>
+</body>
+
+</html>
