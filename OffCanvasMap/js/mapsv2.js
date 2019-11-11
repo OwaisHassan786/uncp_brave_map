@@ -99,52 +99,45 @@ function geoError() {
     var map = new google.maps.Map(document.getElementById('map'),
     {
         zoom: 16,
+        map: map,
         center: new google.maps.LatLng(34.690501, -79.201006),
         mapTypeId: 'roadmap',
         gestureHandling: "greedy"
     });
-    var infoWindow = new google.maps.InfoWindow(),
-        marker, i;
     
-    for (var i = 0; i < collection.length; i++) {
-        $('.google-map__trigger-item').each(function(i){
-            $(this).on('click', function(){
-                for (var j = 0; j < collection.length; j++) {
-                    markers[j].setVisible(false);
-                }
-                markers[i].setVisible(true);
-                google.maps.event.trigger(markers[i], 'click'); 
-            });
-        });
-        // Append a link to the markers DIV for each marker
-        var position = new google.maps.LatLng(collection[i][1], collection[i][2]);
-        marker = new google.maps.Marker({
-            position: position,
-            map: map,
-            icon: collection[i][4],
-            animation: google.maps.Animation.DROP,
-            title: collection[i][0],
-        });
-        marker.setVisible(false);
-        // Allow each marker to have an info window
-        google.maps.event.addListener(marker, 'click', (function(marker, i) {
-            return function() {
-                infoWindow.setContent(infoWindowContent[i][0]);
-                infoWindow.open(map, marker);
-                latit = marker.getPosition().lat();
-                longit = marker.getPosition().lng();
-                // console.log("lat: " + latit);
-                // console.log("lng: " + longit);
-            }
-        })(marker, i));
-    markers.push(marker);
-    }
+    // Allow each marker to have an info window
+}
     // Trigger a click event on each marker when the corresponding marker link is clicked
-    $('.marker-link').on('click', function () {
-        marker.setMap(null);
-        this.marker.setMap(map);
-        google.maps.event.trigger(markers[$(this).data('markerid')], 'click');
+    //$('.marker-link').on('click', function () {
+    //    marker.setMap(null);
+    //    this.marker.setMap(map);
+    //    google.maps.event.trigger(markers[$(this).data('markerid')], 'click');
+    //});
+
+// Append a link to the markers DIV for each marker
+function locationIndex(location1) {
+    var infoWindow = new google.maps.InfoWindow(),
+        marker, viewPin;
+    collection;
+    var viewPin = collection.indexOf(location1);
+    var position = new google.maps.LatLng(collection[viewPin][1], collection[viewPin][2]);
+    marker = new google.maps.Marker({
+        position: position,
+        map: map,
+        icon: collection[viewPin][4],
+        animation: google.maps.Animation.DROP,
+        title: collection[viewPin][0],
     });
+    google.maps.event.addListener(marker, 'click', (function(marker, viewPin) {
+        return function() {
+            infoWindow.setContent(infoWindowContent[viewPin][0]);
+            infoWindow.open(map, marker);
+            latit = marker.getPosition().lat();
+            longit = marker.getPosition().lng();
+            // console.log("lat: " + latit);
+            // console.log("lng: " + longit);
+        }
+    })(marker, viewPin));
 }
 function getLocation() {
     if (navigator.geolocation) {
